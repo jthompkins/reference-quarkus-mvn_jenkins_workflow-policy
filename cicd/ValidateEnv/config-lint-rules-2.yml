@@ -1,0 +1,17 @@
+version: 1
+description: Rules for Kubernetes spec files
+type: Kubernetes
+files:
+  - "*.yml"
+
+rules:
+
+# Rule to check for sidecar annotation in Namespace
+  - id: TSSC_TEST_FOR_SERVICE_MESH
+    severity: WARNING
+    message: Check for sidecar service mesh
+    resource: Namespace
+    assertions:
+      - key: spec.template.metadata.annotations
+        op: contains
+        value: '"sidecar.istio.io/inject": true'

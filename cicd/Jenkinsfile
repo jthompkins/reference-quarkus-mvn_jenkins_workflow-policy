@@ -1,0 +1,19 @@
+// Load the TSSC Jenkins Library
+library identifier: 'tssc-jenkins-library@main',
+retriever: modernSCM([
+    $class: 'GitSCMSource',
+    remote: 'https://github.com/rhtconsulting/tssc-jenkins-library.git'
+])
+
+// run the pipeline
+pipelineJava8(
+    configDir: 'cicd/tssc/',
+    credentialIDsopsPGPKey: 'tssc-reference-app-quarkus-rest-json-sops-pgp-key',
+
+    tsscLibIndexUrl: 'https://test.pypi.org/simple/',
+    tsscLibVersion: '0.10.1.dev10',
+    jenkinsWorkersImageRepositoryName: 'tssc',
+    jenkinsWorkersImageTag: 'edge',
+    jenkinsWorkersImagePullPolicy: 'Always',
+    kubernetesServiceAccountForJenkinsWorkersPod: 'test'
+)
