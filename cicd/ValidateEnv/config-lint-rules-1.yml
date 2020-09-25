@@ -14,4 +14,4 @@ rules:
   assertions:
     - key: spec.template.metadata.labels.app
       op: contains
-      value: 'quarkus-java-backend'
+      value: 'reference-quarkus-mvn-deploy'
