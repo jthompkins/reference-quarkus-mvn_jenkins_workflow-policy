@@ -1,8 +1,8 @@
-// Load the TSSC Jenkins Library
-library identifier: 'ploigos-jenkins-library@feature/refactor',
+// Load the Ploigos Jenkins Library
+library identifier: 'ploigos-jenkins-library@v0.14.0',
 retriever: modernSCM([
     $class: 'GitSCMSource',
-    remote: 'https://github.com/itewk/ploigos-jenkins-library.git'
+    remote: 'https://github.com/ploigos/ploigos-jenkins-library.git'
 ])
 
 // run the pipeline
@@ -12,14 +12,15 @@ ploigosWorkflowStandard(
 
     workflowServiceAccountName: 'ploigos-workflow-ref-quarkus-mvn-jenkins-std-fruit',
 
-    workflowWorkersImagePullPolicy: 'Always',
-
-    workflowWorkerImageUnitTest: 'tssc/tssc-tool-maven:nightly',
-    workflowWorkerImagePackage: 'tssc/tssc-tool-maven:nightly',
-    workflowWorkerImageStaticCodeAnalysis: 'tssc/tssc-tool-sonar:nightly',
-    workflowWorkerImagePushArtifacts: 'tssc/tssc-tool-maven:nightly',
-    workflowWorkerImageUAT: 'tssc/tssc-tool-maven:nightly',
-
-    stepRunnerUpdateLibrary: true,
-    stepRunnerLibSourceUrl: "git+https://github.com/rhtconsulting/tssc-python-package.git@main"
+    workflowWorkerImageDefault: 'ploigos/ploigos-ci-agent-jenkins:v0.14.0',
+    workflowWorkerImageUnitTest: 'ploigos/ploigos-tool-maven:v0.14.0',
+    workflowWorkerImagePackage: 'ploigos/ploigos-tool-maven:v0.14.0',
+    workflowWorkerImageStaticCodeAnalysis: 'ploigos/ploigos-tool-sonar:v0.14.0',
+    workflowWorkerImagePushArtifacts: 'ploigos/ploigos-tool-maven:v0.14.0',
+    workflowWorkerImageContainerOperations: 'ploigos/ploigos-tool-containers:v0.14.0',
+    workflowWorkerImageContainerImageStaticComplianceScan: 'ploigos/ploigos-tool-openscap:v0.14.0',
+    workflowWorkerImageContainerImageStaticVulnerabilityScan: 'ploigos/ploigos-tool-openscap:v0.14.0',
+    workflowWorkerImageDeploy: 'ploigos/ploigos-tool-argocd:v0.14.0',
+    workflowWorkerImageValidateEnvironmentConfiguration: 'ploigos/ploigos-tool-config-lint:v0.14.0',
+    workflowWorkerImageUAT: 'ploigos/ploigos-tool-maven:v0.14.0'
 )
