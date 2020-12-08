@@ -8,7 +8,6 @@ tssc-config:
     application-name: ref-quarkus-mvn-jenkins-std
     service-name: fruit
 
-    argocd-api: argocd-server-argocd.apps.tssc.rht-set.com
     maven-servers:
       internal-mirror:
         id: internal-server
@@ -24,14 +23,6 @@ tssc-config:
         quay-quay-enterprise.apps.tssc.rht-set.com:
             username: ploigos-ref+workflow_reference_quarkus_mvn_jenkins_workflow_standard
 
-  global-environment-defaults:
-    DEV:
-      kube-app-domain: dev.apps.tssc.rht-set.com
-    TEST:
-      kube-app-domain: test.apps.tssc.rht-set.com
-    PROD:
-      kube-app-domain: apps.tssc.rht-set.com
-
   generate-metadata:
   - implementer: Maven
   - implementer: Git
@@ -40,23 +31,19 @@ tssc-config:
   tag-source:
   - implementer: Git
     config:
-      username: sa-ploigos-ref-apps
+      git-username: sa-ploigos-ref-apps
 
   unit-test:
   - implementer: Maven
-    config: {
-    }
 
   package:
   - implementer: Maven
-    config: {
-    }
 
   static-code-analysis:
   - implementer: SonarQube
     config:
       url: https://sonarqube-sonarqube.apps.tssc.rht-set.com/
-      user: reference-apps-sa
+      username: reference-apps-sa
 
   push-artifacts:
   - implementer: Maven
@@ -101,16 +88,21 @@ tssc-config:
   deploy:
   - implementer: ArgoCD
     config:
-      git-email: 'napsspo+tssc@redhat.com'
-      helm-config-repo: http://gitea.tssc.rht-set.com/ploigos-reference-applications/reference-quarkus-mvn-cloud-resources_jenkins_workflow-standard.git
-      argocd-helm-chart-path: charts/reference-quarkus-mvn-deploy
-      num-replicas: 1
-      route-enabled: true
-      readiness-probe-path: /fruits
-      liveness-probe-path: /fruits
-      destination-url: docker://quay-quay-enterprise.apps.tssc.rht-set.com
+      argocd-api: argocd-server-argocd.apps.tssc.rht-set.com
       argocd-username: admin
+      argocd-skip-tls: True
+      deployment-config-helm-chart-path: charts/reference-quarkus-mvn-deploy
+      deployment-config-repo: http://gitea.tssc.rht-set.com/ploigos-reference-applications/reference-quarkus-mvn-cloud-resources_jenkins_workflow-standard.git
+      deployment-config-helm-chart-values-file-image-tag-yq-path: 'image.tag'
       git-username: sa-ploigos-ref-apps
+      git-email: 'napsspo+tssc@redhat.com'
+      environment-config:
+        DEV:
+          deployment-config-helm-chart-environment-values-file: values-DEV.yaml
+        TEST:
+          deployment-config-helm-chart-environment-values-file: values-TEST.yaml
+        PROD:
+          deployment-config-helm-chart-environment-values-file: values-PROD.yaml
 
   validate-environment-configuration:
   - implementer: ConfiglintFromArgocd
@@ -119,7 +111,6 @@ tssc-config:
       rules: cicd/ValidateEnv/
 
   uat:
-  - implementer: Maven
-    config: {
+  - implementer: MavenSeleniumCucumber
+    config:
       selenium-hub-url: http://67.207.93.102:4444
-    }

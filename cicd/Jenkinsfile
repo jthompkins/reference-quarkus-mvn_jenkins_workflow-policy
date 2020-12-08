@@ -12,15 +12,20 @@ ploigosWorkflowStandard(
 
     workflowServiceAccountName: 'ploigos-workflow-ref-quarkus-mvn-jenkins-std-fruit',
 
-    workflowWorkerImageDefault: 'ploigos/ploigos-ci-agent-jenkins:v0.14.0',
-    workflowWorkerImageUnitTest: 'ploigos/ploigos-tool-maven:v0.14.0',
-    workflowWorkerImagePackage: 'ploigos/ploigos-tool-maven:v0.14.0',
-    workflowWorkerImageStaticCodeAnalysis: 'ploigos/ploigos-tool-sonar:v0.14.0',
-    workflowWorkerImagePushArtifacts: 'ploigos/ploigos-tool-maven:v0.14.0',
-    workflowWorkerImageContainerOperations: 'ploigos/ploigos-tool-containers:v0.14.0',
-    workflowWorkerImageContainerImageStaticComplianceScan: 'ploigos/ploigos-tool-openscap:v0.14.0',
-    workflowWorkerImageContainerImageStaticVulnerabilityScan: 'ploigos/ploigos-tool-openscap:v0.14.0',
-    workflowWorkerImageDeploy: 'ploigos/ploigos-tool-argocd:v0.14.0',
-    workflowWorkerImageValidateEnvironmentConfiguration: 'ploigos/ploigos-tool-config-lint:v0.14.0',
-    workflowWorkerImageUAT: 'ploigos/ploigos-tool-maven:v0.14.0'
+    workflowWorkersImagePullPolicy: 'Always',
+
+    workflowWorkerImageDefault: 'ploigos/ploigos-ci-agent-jenkins:edge',
+    workflowWorkerImageUnitTest: 'ploigos/ploigos-tool-maven:edge',
+    workflowWorkerImagePackage: 'ploigos/ploigos-tool-maven:edge',
+    workflowWorkerImageStaticCodeAnalysis: 'ploigos/ploigos-tool-sonar:edge',
+    workflowWorkerImagePushArtifacts: 'ploigos/ploigos-tool-maven:edge',
+    workflowWorkerImageContainerOperations: 'ploigos/ploigos-tool-containers:edge',
+    workflowWorkerImageContainerImageStaticComplianceScan: 'ploigos/ploigos-tool-openscap:edge',
+    workflowWorkerImageContainerImageStaticVulnerabilityScan: 'ploigos/ploigos-tool-openscap:edge',
+    workflowWorkerImageDeploy: 'ploigos/ploigos-tool-argocd:edge',
+    workflowWorkerImageValidateEnvironmentConfiguration: 'ploigos/ploigos-tool-config-lint:edge',
+    workflowWorkerImageUAT: 'ploigos/ploigos-tool-maven:edge',
+
+    stepRunnerUpdateLibrary: true,
+    stepRunnerLibSourceUrl: 'git+https://github.com/rhtconsulting/tssc-python-package.git@feature/results-refactor'
 )

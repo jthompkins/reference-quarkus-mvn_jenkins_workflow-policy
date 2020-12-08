@@ -15,9 +15,7 @@
 
 replicaCount: {{ num_replicas }}
 
-deploymentNamespace: {{ deployment_namespace }}
-
-service: {{ application_name }}-{{service_name }}
+service: fruit
 image:
   repository: {{ container_image_uri }}
   tag: {{ image_version }}
@@ -29,8 +27,8 @@ service:
   targetport: 8080
 
 probe:
-  readypath: {{ readiness_probe_path }}
-  livepath:  {{ liveness_probe_path }}
+  readypath: /fruits
+  livepath:  /fruits
 
 route:
   enabled: {{ route_enabled }}
