@@ -88,6 +88,11 @@ public class StepDefinitions {
         assertTrue(found);
     }
 
+    @Then("I clean up")
+    public void i_clean_up() {
+        this.driver.quit();
+    }
+
     private String post(URL url, String data) throws IOException {
         HttpURLConnection con = (HttpURLConnection)url.openConnection();
         con.setRequestMethod("POST");

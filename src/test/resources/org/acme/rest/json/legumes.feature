@@ -7,3 +7,4 @@ Feature: Able to interact with legumes
     And the names are:
       |Carrot  |
       |Zucchini|
+    Then I clean up
