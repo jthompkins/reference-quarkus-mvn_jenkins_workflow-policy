@@ -3,8 +3,6 @@ FROM registry.redhat.io/ubi8/openjdk-8
 
 USER 0
 
-RUN env
-
 ##############################
 # vulenerability remediation #
 ##############################
