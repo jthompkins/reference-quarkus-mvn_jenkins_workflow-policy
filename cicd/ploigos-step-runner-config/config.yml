@@ -96,7 +96,7 @@ tssc-config:
       deployment-config-helm-chart-values-file-image-tag-yq-path: 'image.tag'
       git-username: sa-ploigos-ref-apps
       git-email: 'napsspo+tssc@redhat.com'
-      argocd-sync-timeout-seconds: 120
+      argocd-sync-timeout-seconds: 150
       environment-config:
         DEV:
           deployment-config-helm-chart-environment-values-file: values-DEV.yaml
