@@ -1,5 +1,5 @@
 // Load the Ploigos Jenkins Library
-library identifier: 'ploigos-jenkins-library@v0.14.0',
+library identifier: 'ploigos-jenkins-library@v0.15.0',
 retriever: modernSCM([
     $class: 'GitSCMSource',
     remote: 'https://github.com/ploigos/ploigos-jenkins-library.git'
@@ -12,20 +12,15 @@ ploigosWorkflowStandard(
 
     workflowServiceAccountName: 'ploigos-workflow-ref-quarkus-mvn-jenkins-std-fruit',
 
-    workflowWorkersImagePullPolicy: 'Always',
-
-    workflowWorkerImageDefault: 'ploigos/ploigos-ci-agent-jenkins:edge',
-    workflowWorkerImageUnitTest: 'ploigos/ploigos-tool-maven:edge',
-    workflowWorkerImagePackage: 'ploigos/ploigos-tool-maven:edge',
-    workflowWorkerImageStaticCodeAnalysis: 'ploigos/ploigos-tool-sonar:edge',
-    workflowWorkerImagePushArtifacts: 'ploigos/ploigos-tool-maven:edge',
-    workflowWorkerImageContainerOperations: 'ploigos/ploigos-tool-containers:edge',
-    workflowWorkerImageContainerImageStaticComplianceScan: 'ploigos/ploigos-tool-openscap:edge',
-    workflowWorkerImageContainerImageStaticVulnerabilityScan: 'ploigos/ploigos-tool-openscap:edge',
-    workflowWorkerImageDeploy: 'ploigos/ploigos-tool-argocd:edge',
-    workflowWorkerImageValidateEnvironmentConfiguration: 'ploigos/ploigos-tool-config-lint:edge',
-    workflowWorkerImageUAT: 'ploigos/ploigos-tool-maven:edge',
-
-    stepRunnerUpdateLibrary: true,
-    stepRunnerLibSourceUrl: 'git+https://github.com/rhtconsulting/tssc-python-package.git@feature/results-refactor'
+    workflowWorkerImageDefault: 'ploigos/ploigos-ci-agent-jenkins:pr-49',
+    workflowWorkerImageUnitTest: 'ploigos/ploigos-tool-maven:pr-49',
+    workflowWorkerImagePackage: 'ploigos/ploigos-tool-maven:pr-49',
+    workflowWorkerImageStaticCodeAnalysis: 'ploigos/ploigos-tool-sonar:pr-49',
+    workflowWorkerImagePushArtifacts: 'ploigos/ploigos-tool-maven:pr-49',
+    workflowWorkerImageContainerOperations: 'ploigos/ploigos-tool-containers:pr-49',
+    workflowWorkerImageContainerImageStaticComplianceScan: 'ploigos/ploigos-tool-openscap:pr-49',
+    workflowWorkerImageContainerImageStaticVulnerabilityScan: 'ploigos/ploigos-tool-openscap:pr-49',
+    workflowWorkerImageDeploy: 'ploigos/ploigos-tool-argocd:pr-49',
+    workflowWorkerImageValidateEnvironmentConfiguration: 'ploigos/ploigos-tool-config-lint:pr-49',
+    workflowWorkerImageUAT: 'ploigos/ploigos-tool-maven:pr-49'
 )
