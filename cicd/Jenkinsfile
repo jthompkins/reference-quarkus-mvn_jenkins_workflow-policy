@@ -12,15 +12,15 @@ ploigosWorkflowStandard(
 
     workflowServiceAccountName: 'ploigos-workflow-ref-quarkus-mvn-jenkins-std-fruit',
 
-    workflowWorkerImageDefault: 'ploigos/ploigos-ci-agent-jenkins:pr-49',
-    workflowWorkerImageUnitTest: 'ploigos/ploigos-tool-maven:pr-49',
-    workflowWorkerImagePackage: 'ploigos/ploigos-tool-maven:pr-49',
-    workflowWorkerImageStaticCodeAnalysis: 'ploigos/ploigos-tool-sonar:pr-49',
-    workflowWorkerImagePushArtifacts: 'ploigos/ploigos-tool-maven:pr-49',
-    workflowWorkerImageContainerOperations: 'ploigos/ploigos-tool-containers:pr-49',
-    workflowWorkerImageContainerImageStaticComplianceScan: 'ploigos/ploigos-tool-openscap:pr-49',
-    workflowWorkerImageContainerImageStaticVulnerabilityScan: 'ploigos/ploigos-tool-openscap:pr-49',
-    workflowWorkerImageDeploy: 'ploigos/ploigos-tool-argocd:pr-49',
-    workflowWorkerImageValidateEnvironmentConfiguration: 'ploigos/ploigos-tool-config-lint:pr-49',
-    workflowWorkerImageUAT: 'ploigos/ploigos-tool-maven:pr-49'
+    workflowWorkerImageDefault: 'ploigos/ploigos-ci-agent-jenkins:v0.15.0',
+    workflowWorkerImageUnitTest: 'ploigos/ploigos-tool-maven:v0.15.0',
+    workflowWorkerImagePackage: 'ploigos/ploigos-tool-maven:v0.15.0',
+    workflowWorkerImageStaticCodeAnalysis: 'ploigos/ploigos-tool-sonar:v0.15.0',
+    workflowWorkerImagePushArtifacts: 'ploigos/ploigos-tool-maven:v0.15.0',
+    workflowWorkerImageContainerOperations: 'ploigos/ploigos-tool-containers:v0.15.0',
+    workflowWorkerImageContainerImageStaticComplianceScan: 'ploigos/ploigos-tool-openscap:v0.15.0',
+    workflowWorkerImageContainerImageStaticVulnerabilityScan: 'ploigos/ploigos-tool-openscap:v0.15.0',
+    workflowWorkerImageDeploy: 'ploigos/ploigos-tool-argocd:v0.15.0',
+    workflowWorkerImageValidateEnvironmentConfiguration: 'ploigos/ploigos-tool-config-lint:v0.15.0',
+    workflowWorkerImageUAT: 'ploigos/ploigos-tool-maven:v0.15.0'
 )
