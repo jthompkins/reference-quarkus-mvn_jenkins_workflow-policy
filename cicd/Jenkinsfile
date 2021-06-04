@@ -1,26 +1,31 @@
 // Load the Ploigos Jenkins Library
-library identifier: 'ploigos-jenkins-library@v0.17.0',
+library identifier: 'ploigos-jenkins-library@main',
 retriever: modernSCM([
     $class: 'GitSCMSource',
     remote: 'https://github.com/ploigos/ploigos-jenkins-library.git'
 ])
 
 // run the pipeline
-ploigosWorkflowStandard(
+ploigosWorkflowAutomatedGovernance(
     stepRunnerConfigDir: 'cicd/ploigos-step-runner-config/',
-    pgpKeysSecretName: 'pgp-keys-ploigos-workflow-ref-quarkus-mvn-jenkins-std-fruit',
+    pgpKeysSecretName: 'tssc-gpg-key',
 
-    workflowServiceAccountName: 'ploigos-workflow-ref-quarkus-mvn-jenkins-std-fruit',
+    workflowServiceAccountName: 'jenkins',
 
-    workflowWorkerImageDefault: 'ploigos/ploigos-ci-agent-jenkins:v0.16.0',
-    workflowWorkerImageUnitTest: 'ploigos/ploigos-tool-maven:v0.16.0',
-    workflowWorkerImagePackage: 'ploigos/ploigos-tool-maven:v0.16.0',
-    workflowWorkerImageStaticCodeAnalysis: 'ploigos/ploigos-tool-sonar:v0.16.0',
-    workflowWorkerImagePushArtifacts: 'ploigos/ploigos-tool-maven:v0.16.0',
-    workflowWorkerImageContainerOperations: 'ploigos/ploigos-tool-containers:v0.16.0',
-    workflowWorkerImageContainerImageStaticComplianceScan: 'ploigos/ploigos-tool-openscap:v0.16.0',
-    workflowWorkerImageContainerImageStaticVulnerabilityScan: 'ploigos/ploigos-tool-openscap:v0.16.0',
-    workflowWorkerImageDeploy: 'ploigos/ploigos-tool-argocd:v0.16.0',
-    workflowWorkerImageValidateEnvironmentConfiguration: 'ploigos/ploigos-tool-config-lint:v0.16.0',
-    workflowWorkerImageUAT: 'ploigos/ploigos-tool-maven:v0.16.0'
+    workflowWorkerAutomatedGovernance: 'quay.io/ploigos/ploigos-tool-rekor:pr-63',
+    workflowWorkerImageDefault: 'quay.io/ploigos/ploigos-ci-agent-jenkins:v0.16.0',
+    workflowWorkerImageUnitTest: 'quay.io/ploigos/ploigos-tool-maven:v0.16.0',
+    workflowWorkerImagePackage: 'quay.io/ploigos/ploigos-tool-maven:v0.16.0',
+    workflowWorkerImageStaticCodeAnalysis: 'quay.io/ploigos/ploigos-tool-sonar:v0.16.0',
+    workflowWorkerImagePushArtifacts: 'quay.io/ploigos/ploigos-tool-maven:v0.16.0',
+    workflowWorkerImageContainerOperations: 'quay.io/ploigos/ploigos-tool-containers:v0.16.0',
+    workflowWorkerImageContainerImageStaticComplianceScan: 'quay.io/ploigos/ploigos-tool-openscap:v0.16.0',
+    workflowWorkerImageContainerImageStaticVulnerabilityScan: 'quay.io/ploigos/ploigos-tool-openscap:v0.16.0',
+    workflowWorkerImageDeploy: 'quay.io/ploigos/ploigos-tool-argocd:v0.16.0',
+    workflowWorkerImageValidateEnvironmentConfiguration: 'quay.io/ploigos/ploigos-tool-config-lint:v0.16.0',
+    workflowWorkerImageUAT: 'quay.io/ploigos/ploigos-tool-maven:v0.16.0',
+
+    separatePlatformConfig: true,
+    stepRunnerLibSourceUrl: "git+https://github.com/ploigos/ploigos-step-runner.git@feature/rekor",
+    stepRunnerUpdateLibrary: true
 )

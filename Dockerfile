@@ -10,7 +10,7 @@ USER 0
 # do not update filesystem package as it requires that buildah be run as root
 # and even buildah unshare doesn't fix the problem.
 # see: https://bugzilla.redhat.com/show_bug.cgi?id=1708249#c31
-RUN dnf update -y --allowerasing --exclude=filesystem && \
+RUN dnf update -y --allowerasing --exclude=filesystem --nobest && \
     dnf clean all
 
 ##########################
