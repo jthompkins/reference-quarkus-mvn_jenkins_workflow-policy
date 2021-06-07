@@ -6,13 +6,14 @@ retriever: modernSCM([
 ])
 
 // run the pipeline
-ploigosWorkflowAutomatedGovernance(
+ploigosWorkflowAudit(
     stepRunnerConfigDir: 'cicd/ploigos-step-runner-config/',
     pgpKeysSecretName: 'tssc-gpg-key',
 
     workflowServiceAccountName: 'jenkins',
 
     workflowWorkerAutomatedGovernance: 'quay.io/ploigos/ploigos-tool-rekor:pr-63',
+    workflowWorkerAudit: 'quay.io/jthompki/opa:latest',
     workflowWorkerImageDefault: 'quay.io/ploigos/ploigos-ci-agent-jenkins:v0.16.0',
     workflowWorkerImageUnitTest: 'quay.io/ploigos/ploigos-tool-maven:v0.16.0',
     workflowWorkerImagePackage: 'quay.io/ploigos/ploigos-tool-maven:v0.16.0',

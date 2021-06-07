@@ -38,7 +38,7 @@ step-runner-config:
       gpg-key: /var/pgp-private-keys/gpg_public_key
       gpg-user: tssc-service-account@redhat.com
 
-  policy-enforcement:
+  audit:
   - implementer: OpenPolicyAgent
     
 
